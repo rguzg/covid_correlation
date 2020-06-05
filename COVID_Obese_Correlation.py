@@ -16,9 +16,9 @@ with open('D:\\raulg\\Desktop\\200518COVID19MEXICO.csv', newline='') as f:
         if(row['FECHA_INGRESO'] == "{0:%d}/{0:%m}/{0:%y}".format(current_date)):
             if(row['RESULTADO'] == '2'):
                 cases_per_day += 1
-                # A number two means that the pacient is obese
-                if(row['OBESIDAD'] == '2'):
-                    obesity_cases += 1
+            # A number two means that the pacient is obese
+            if(row['OBESIDAD'] == '2'):
+                obesity_cases += 1
         else:
             print("\nChecked {0}".format(row['FECHA_INGRESO']))
             current_date = current_date + datetime.timedelta(days = 1)
@@ -35,7 +35,7 @@ with open('D:\\raulg\\Desktop\\obesity_cases.csv', newline='', mode='w') as obes
     writer = csv.writer(obese_file)
 
     for key in cases_relation:
-        writer.writerow([cases_relation[key]['cases_per_day'], cases_relation[key]['obesity_cases']])
+        writer.writerow([cases_relation[key]['obesity_cases'], cases_relation[key]['cases_per_day']])
 
     print("\nCSV written")
 
